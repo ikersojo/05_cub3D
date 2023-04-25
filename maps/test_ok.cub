@@ -1,0 +1,16 @@
+NO ./large-gray-wall.xpm
+SO ./large-gray-wall.xpm
+WE ./large-gray-wall.xpm
+EA ./large-gray-wall.xpm
+
+F 0,255,0
+C 0,0,255
+
+  1111111111
+111000000001
+100101010001
+100010100001
+100000000001
+10000N011101
+10000001 101
+11111111 111
