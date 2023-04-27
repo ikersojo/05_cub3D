@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 23:35:56 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/04/25 23:37:44 by isojo-go         ###   ########.fr       */
+/*   Updated: 2023/04/27 23:03:07 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,19 @@ void	ft_print_rays(t_game *game)
 	i = 0;
 	while (i < SCREEN_W)
 	{
-		printf("  - ray %d - vector (%.3f, %.3f) - dist: %.3f (corrected: %.3f) - wall_h: %.3f\n", i, game->rays.dir[i].x, game->rays.dir[i].y, game->rays.dist[i], game->rays.dist[i] * cos(game->rays.angle[i]), game->rays.wall_h[i]);
+		printf(" - ray %d - vector (%.3f, %.3f)", i, game->rays.dir[i].x,
+			game->rays.dir[i].y);
+		printf(" - dist: %.3f (corrected: %.3f)", game->rays.dist[i],
+			game->rays.dist[i] * cos(game->rays.angle[i]));
+		printf(" - wall_h: %.3f", game->rays.wall_h[i]);
+		printf(" - text: %d\n", game->rays.texture[i]);
 		i += 15;
 	}
 	printf("\n-----------------------------------------\033[0;39m\n\n");
 }
 
-
 void	ft_print_game_data(t_game *game)
 {
 	ft_print_map_data(game->map);
 	ft_print_player_data(game->player);
-	// ft_print_raycast_data(xxxxx);
-	// ft_print_img_data(game->gui->img);
 }

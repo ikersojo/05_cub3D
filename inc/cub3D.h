@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 20:19:29 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/04/25 23:33:42 by isojo-go         ###   ########.fr       */
+/*   Updated: 2023/04/27 17:36:07 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define SCREEN_H	720
 # define WALL_H		1000
 # define STEP		0.2
-# define ROT_STEP	0.05
+# define ROT_STEP	0.1
 # define FOD		M_PI / 3
 
 // Key Codes for MacOS
@@ -68,6 +68,7 @@ typedef struct s_rays
 	double		angle[SCREEN_W];
 	double		dist[SCREEN_W];
 	double		wall_h[SCREEN_W];
+	int			texture[SCREEN_W];
 }				t_rays;
 
 // store all information about the image to be displayed

@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 23:35:30 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/04/25 23:37:44 by isojo-go         ###   ########.fr       */
+/*   Updated: 2023/04/27 16:56:58 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	ft_on_destroy(int keycode, void *param)
 	return (0);
 }
 
-static void	ft_move(t_game *game, int x, int y)
+static void	ft_move(t_game *game, int x, int y) // TODO: movernos en la dir de la camara
 {
-	game->player->x_pos += (STEP * x); // TODO: movernos en la dir de la camara
+	game->player->x_pos += (STEP * x);
 	game->player->y_pos += (STEP * y);
 	if (DEBUG == 1)
 		ft_print_player_data(game->player);

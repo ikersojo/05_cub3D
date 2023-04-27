@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 23:34:53 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/04/25 23:37:44 by isojo-go         ###   ########.fr       */
+/*   Updated: 2023/04/27 17:13:29 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,9 @@ int	main(int argc, char **argv)
 	{
 		if (ft_check_map(*(argv + 1), &map_w, &map_h) == 1)
 			ft_exit_w_error("The map file is not valid\n");
-
 		game = ft_initialize_game(*(argv + 1), map_w, map_h);
-
 		if (DEBUG == 1)
 			ft_print_game_data(game);
-
 		game->gui = ft_initialize_gui();
 		if (game->gui == NULL)
 		{
@@ -36,21 +33,10 @@ int	main(int argc, char **argv)
 			free (game);
 			ft_exit_w_error("errno");
 		}
-
-		// game->gui->img = ft_init_img(game);
-		// if (game->gui->img == NULL)
-		// {
-		// 	ft_free_all(game);
-		// 	ft_exit_w_error("errno");
-		// }
-
-
-
-
 		mlx_hook(game->gui->win, ON_DESTROY, 1L << 17, ft_on_destroy, &game);
 		mlx_hook(game->gui->win, ON_KEYDOWN, 0, ft_on_keydown, &game);
 
-		// (confirmar necesidad de las siguientes lineas:)
+		// (confirmar necesidad o no de las siguientes lineas:)
 			// mlx_hook(game->gui->win, ON_KEYUP, 0, ft_on_keyup, &game);
 			// mlx_loop_hook(game->gui->mlx, ft_on_idle, &game);
 
@@ -62,3 +48,20 @@ int	main(int argc, char **argv)
 		ft_exit_w_error("syntax: ./bin/cub3D xxxxxx.cub\n");
 	return (EXIT_SUCCESS);
 }
+
+/*
+
+TOOD LIST:
+
+IMPROVEMENTS:
+optimize collision search algorithm
+
+NEEDED FEATURES:
+(Martin) Check map file
+move aligned with the camera
+return colision direction to apply the correct texture
+Load textures
+Replace current draw Wall function with the textured one
+
+*/
+
