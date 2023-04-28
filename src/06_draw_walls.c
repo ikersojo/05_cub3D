@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 23:35:41 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/04/28 14:49:32 by isojo-go         ###   ########.fr       */
+/*   Updated: 2023/04/28 15:53:15 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,41 +39,8 @@ void	ft_get_rays_dir(t_game *game)
 		ft_rotate_ray(game, i, (-FOD / game->gui->width));
 }
 
-
-// static int	check_coords(t_game *game, double x, double y) // en vez de devolver uno, que devuelva un numero distinto por direccion contra la que choca
-// {
-// 	char	**grid;
-// 	int		i;
-// 	int		j;
-
-// 	grid = game->map->grid;
-// 	i = game->map->map_h - (int)floor(y);
-// 	j = (int)floor(x);
-// 	if (grid[i][j] == '1')
-// 		return (1);
-// 	return (0);
-// }
-
-
-
-		// {
-		// 	if (grid[i + 1][j] == '1')
-		// 		return (1);
-		// 	else if (grid[i - 1][j] == '1')
-		// 		return (2);
-		// 	else if (grid[i][j - 1] == '1')
-		// 		return (3);
-		// 	else if (grid[i][j + 1] == '1')
-		// 		return (4);
-		// }
-
-/*
-1: N
-2: S
-3: W
-4: E
-*/
-static int	check_coords(t_game *game, double x, double y) // TODO: arreglar colisiones de paredes interiores
+// Checks coordinates and returns collision plane: 1: N, 2: S, 3: W, 4: E
+static int	check_coords(t_game *game, double x, double y)
 {
 	char	**grid;
 	int		i;
@@ -84,21 +51,16 @@ static int	check_coords(t_game *game, double x, double y) // TODO: arreglar coli
 	i = game->map->map_h - (int)floor(y) - 1;
 	if (grid[i][j] == '1')
 	{
-		if (i == 0)
-			return (1);
-		else if (i == game->map->map_h - 1)
-			return (2);
-		else if (j == 0)
+		if ((fabs(x - floor(x)) < 0.01) && grid[i][j - 1] != '1')
 			return (3);
-		else if (j == game->map->map_w - 1)
+		else if ((fabs(x - ceil(x)) < 0.01) && grid[i][j + 1] != '1')
 			return (4);
+		else if ((fabs(y - floor(y)) < 0.01) && grid[i + 1][j] != '1')
+			return (1);
+		else if ((fabs(y - ceil(y)) < 0.01) && grid[i - 1][j] != '1')
+			return (2);
 		else
-		{
-			if (x - floor(x) > y - floor(y))
-				return (1);
-			else
-				return (2);
-		}
+			return (5);
 	}
 	return (0);
 }
