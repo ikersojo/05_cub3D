@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 23:35:41 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/04/27 23:20:28 by isojo-go         ###   ########.fr       */
+/*   Updated: 2023/04/28 14:49:32 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,18 @@ void	ft_get_rays_dir(t_game *game)
 // }
 
 
+
+		// {
+		// 	if (grid[i + 1][j] == '1')
+		// 		return (1);
+		// 	else if (grid[i - 1][j] == '1')
+		// 		return (2);
+		// 	else if (grid[i][j - 1] == '1')
+		// 		return (3);
+		// 	else if (grid[i][j + 1] == '1')
+		// 		return (4);
+		// }
+
 /*
 1: N
 2: S
@@ -82,14 +94,10 @@ static int	check_coords(t_game *game, double x, double y) // TODO: arreglar coli
 			return (4);
 		else
 		{
-			if (grid[i + 1][j] == '1')
+			if (x - floor(x) > y - floor(y))
 				return (1);
-			else if (grid[i - 1][j] == '1')
+			else
 				return (2);
-			else if (grid[i][j - 1] == '1')
-				return (3);
-			else if (grid[i][j + 1] == '1')
-				return (4);
 		}
 	}
 	return (0);
