@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 23:36:03 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/04/25 23:37:44 by isojo-go         ###   ########.fr       */
+/*   Updated: 2023/04/29 11:42:40 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,20 @@ t_map	*ft_closefd_and_free_map(t_map *map)
 	return (NULL);
 }
 
-void	ft_free_all(t_game *game)
+void	ft_free_textures(t_game *game)
+{
+	int i;
+
+	i = -1;
+	while (++i < 4)
+	{
+		mlx_destroy_image(game->gui->mlx, game->gui->texture[i]->img->img);
+		free(game->gui->texture[i]->img);
+		free(game->gui->texture[i]);
+	}
+}
+
+void	ft_free_all_but_textures(t_game *game)
 {
 	if (game->gui->win != NULL)
 		mlx_destroy_window(game->gui->mlx, game->gui->win);
@@ -51,4 +64,10 @@ void	ft_free_all(t_game *game)
 		free(game->player);
 	if (game != NULL)
 		free (game);
+}
+
+void	ft_free_all(t_game *game)
+{
+	ft_free_textures(game);
+	ft_free_all_but_textures(game);
 }

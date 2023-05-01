@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 20:19:29 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/04/27 17:36:07 by isojo-go         ###   ########.fr       */
+/*   Updated: 2023/04/29 11:27:15 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,21 @@ typedef struct s_img
 	int		height;
 }			t_img;
 
-// store all information about the graphic window
+// store all information about textures
+typedef struct s_tex
+{
+	t_img	*img;
+	int		width;
+	int		height;
+}			t_tex;
+
+// store all information about the graphic window. Textures stored: 1: N, 2: S, 3: W, 4: E
 typedef struct s_gui
 {
 	void	*mlx;
 	void	*win;
 	t_img	*img;
+	t_tex	*texture[4];
 	int		width;
 	int		height;
 }			t_gui;
@@ -150,6 +159,7 @@ int	ft_check_map(char *map_file, int *w, int *h);
 // 02 Initialize game
 t_game	*ft_initialize_game(char *map_file, int map_w, int map_h);
 t_map	*ft_load_map(char *map_file, int map_w, int map_h);
+int		ft_load_textures(t_game *game);
 
 // 03 Define events on game
 int		ft_on_destroy(int keycode, void *param);
@@ -177,6 +187,7 @@ void	ft_put_img(t_game *game);
 
 // Auxiliary Functions
 void	ft_close_game(t_game *game);
+int		check_coords(t_game *game, double x, double y);
 
 // Debugging Information to console
 void	ft_print_player_data(t_player *player);
@@ -188,5 +199,6 @@ void	ft_print_rays(t_game *game);
 t_map	*ft_closefd_and_free_map(t_map *map);
 void	ft_free_map(t_map *map);
 void	ft_free_all(t_game *game);
+void	ft_free_all_but_textures(t_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 23:35:41 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/04/28 15:53:15 by isojo-go         ###   ########.fr       */
+/*   Updated: 2023/04/30 09:12:27 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,34 +38,6 @@ void	ft_get_rays_dir(t_game *game)
 	while (++i < game->gui->width)
 		ft_rotate_ray(game, i, (-FOD / game->gui->width));
 }
-
-// Checks coordinates and returns collision plane: 1: N, 2: S, 3: W, 4: E
-static int	check_coords(t_game *game, double x, double y)
-{
-	char	**grid;
-	int		i;
-	int		j;
-
-	grid = game->map->grid;
-	j = (int)floor(x);
-	i = game->map->map_h - (int)floor(y) - 1;
-	if (grid[i][j] == '1')
-	{
-		if ((fabs(x - floor(x)) < 0.01) && grid[i][j - 1] != '1')
-			return (3);
-		else if ((fabs(x - ceil(x)) < 0.01) && grid[i][j + 1] != '1')
-			return (4);
-		else if ((fabs(y - floor(y)) < 0.01) && grid[i + 1][j] != '1')
-			return (1);
-		else if ((fabs(y - ceil(y)) < 0.01) && grid[i - 1][j] != '1')
-			return (2);
-		else
-			return (5);
-	}
-	return (0);
-}
-
-
 
 void	ft_get_rays_dist(t_game *game) // TODO: optimizar algoritmo
 {
@@ -122,15 +94,19 @@ void	ft_draw_walls(t_game *game) // with colors, not images
 	while (++i < game->gui->width)
 	{
 		if (game->rays.texture[i] == 1)
-			color = 0x00789234;
+			color = 0x00333333;
+			// color = 0x00ffff00;
 		else if (game->rays.texture[i] == 2)
-			color = 0x00234678;
+			color = 0x00333333;
+			// color = 0x00ff0000;
 		else if (game->rays.texture[i] == 3)
-			color = 0x00945643;
+			color = 0x00999999;
+			// color = 0x00990099;
 		else if (game->rays.texture[i] == 4)
-			color = 0x00200008;
+			color = 0x00999999;
+			// color = 0x00ffcc00;
 		else
-			color = 0x00111111;
+			color = 0x00000000;
 
 
 		if (game->gui->height <= game->rays.wall_h[i])
@@ -148,6 +124,9 @@ void	ft_draw_walls(t_game *game) // with colors, not images
 	}
 
 
-	if (DEBUG == 1)
-		ft_print_rays(game);
+	// if (DEBUG == 1)
+	// 	ft_print_rays(game);
 }
+
+
+

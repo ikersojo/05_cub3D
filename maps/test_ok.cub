@@ -1,7 +1,7 @@
-NO ./large-gray-wall.xpm
-SO ./large-gray-wall.xpm
-WE ./large-gray-wall.xpm
-EA ./large-gray-wall.xpm
+NO ./maps/large-gray-wall.xpm
+SO ./maps/large-gray-wall.xpm
+WE ./maps/large-gray-wall.xpm
+EA ./maps/large-gray-wall.xpm
 
 F 0,255,0
 C 0,0,255

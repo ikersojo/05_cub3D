@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 23:35:30 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/04/27 16:56:58 by isojo-go         ###   ########.fr       */
+/*   Updated: 2023/04/30 09:21:06 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,39 @@ int	ft_on_destroy(int keycode, void *param)
 
 static void	ft_move(t_game *game, int x, int y) // TODO: movernos en la dir de la camara
 {
-	game->player->x_pos += (STEP * x);
-	game->player->y_pos += (STEP * y);
+	double	rot_vx;
+	double	rot_vy;
+	double	new_x;
+	double	new_y;
+
+	rot_vx = game->player->vx * cos(M_PI / 2) - game->player->vy * sin(M_PI / 2);
+	rot_vy = game->player->vx * sin(M_PI / 2) + game->player->vy * cos(M_PI / 2);
+	if (x != 0)
+	{
+		new_x = game->player->x_pos + (STEP * game->player->vx * x);
+		new_y = game->player->y_pos + (STEP * game->player->vy * x);
+	}
+	else
+	{
+		new_x = game->player->x_pos + (STEP * rot_vx * y);
+		new_y = game->player->y_pos + (STEP * rot_vy * y);
+	}
+
+	if (new_x < 0)
+		game->player->x_pos = 0;
+	else if (new_x > game->map->map_w - 1)
+		game->player->x_pos = game->map->map_w - 1;
+	else
+		game->player->x_pos = new_x;
+
+	if (new_y < 0)
+		game->player->y_pos = 0;
+	else if (new_y > game->map->map_h - 1)
+		game->player->y_pos = game->map->map_h - 1;
+	else
+		game->player->y_pos = new_y;
+	
+
 	if (DEBUG == 1)
 		ft_print_player_data(game->player);
 	ft_put_img(game);
@@ -59,13 +90,13 @@ int	ft_on_keydown(int keycode, void *param)
 	if (keycode == KEY_ESC)
 		ft_close_game(game);
 	else if (keycode == KEY_W)
-		ft_move(game, 0, 1);
-	else if (keycode == KEY_S)
-		ft_move(game, 0, -1);
-	else if (keycode == KEY_A)
-		ft_move(game, -1, 0);
-	else if (keycode == KEY_D)
 		ft_move(game, 1, 0);
+	else if (keycode == KEY_S)
+		ft_move(game, -1, 0);
+	else if (keycode == KEY_A)
+		ft_move(game, 0, 1);
+	else if (keycode == KEY_D)
+		ft_move(game, 0, -1);
 	else if (keycode == KEY_LEFT)
 		ft_rotate(game, 1);
 	else if (keycode == KEY_RIGHT)
