@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/25 23:36:03 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/04/29 11:42:40 by isojo-go         ###   ########.fr       */
+/*   Created: 2023/05/03 23:29:13 by isojo-go          #+#    #+#             */
+/*   Updated: 2023/05/03 23:29:18 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_map	*ft_closefd_and_free_map(t_map *map)
 
 void	ft_free_textures(t_game *game)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < 4)

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/25 23:35:00 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/04/29 10:51:23 by isojo-go         ###   ########.fr       */
+/*   Created: 2023/05/03 19:07:41 by isojo-go          #+#    #+#             */
+/*   Updated: 2023/05/03 19:38:32 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_check_map(char *map_file, int *w, int *h)
 	
 	//for development set as map ok.
 	(void)map_file;
-	*w = 12; // from test map
+	*w = 15; // from test map
 	*h = 8; // from test map
 
 

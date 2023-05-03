@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 20:19:29 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/04/29 11:27:15 by isojo-go         ###   ########.fr       */
+/*   Updated: 2023/05/03 23:12:20 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 // Debug Mode
 # define DEBUG		1
+# define TEX_ON		1
 
 // Game Parameters
 # define SCREEN_W	1280
@@ -67,8 +68,10 @@ typedef struct s_rays
 	t_vector	dir[SCREEN_W];
 	double		angle[SCREEN_W];
 	double		dist[SCREEN_W];
-	double		wall_h[SCREEN_W];
+	int			wall_h[SCREEN_W];
 	int			texture[SCREEN_W];
+	double		x[SCREEN_W];
+	double		y[SCREEN_W];
 }				t_rays;
 
 // store all information about the image to be displayed
@@ -89,6 +92,7 @@ typedef struct s_tex
 	t_img	*img;
 	int		width;
 	int		height;
+	int		texel[SCREEN_H][SCREEN_W];
 }			t_tex;
 
 // store all information about the graphic window. Textures stored: 1: N, 2: S, 3: W, 4: E
@@ -150,7 +154,6 @@ typedef struct s_game
 	t_rays		rays;
 }				t_game;
 
-
 // ---- CROSS FILE FUNCTIONS ---- //
 
 // 01 Confim map validity (and extract WxH)
@@ -158,7 +161,14 @@ int	ft_check_map(char *map_file, int *w, int *h);
 
 // 02 Initialize game
 t_game	*ft_initialize_game(char *map_file, int map_w, int map_h);
+t_gui	*ft_initialize_gui(void);
+t_img	*ft_init_img(t_game *game);
 t_map	*ft_load_map(char *map_file, int map_w, int map_h);
+int		ft_load_map_params(t_map *map, char *line);
+int		ft_check_params(t_map *map);
+int		ft_get_rgb(char *str, int *r, int *g, int *b);
+char	**ft_gen_map_grid(t_map *map, char **line);
+void	ft_get_initial_pos(t_map *map);
 int		ft_load_textures(t_game *game);
 
 // 03 Define events on game
@@ -166,35 +176,32 @@ int		ft_on_destroy(int keycode, void *param);
 int		ft_on_keydown(int keycode, void *param);
 int		ft_on_idle(int keycode, void *param);
 
+// 04 Raycast to get all data of each ray
+void	ft_raycast(t_game *game);
 
-
-
-t_gui	*ft_initialize_gui(void);
-t_img	*ft_init_img(t_game *game);
-
-// 04 draw pixels to image
-
-int	ft_gen_color_int(int r, int g, int b);
+// 05 - 06 draw pixels to image
 void	ft_put_pixel(t_img *img, int x, int y, int color);
-
-
 void	ft_draw_background(t_game *game);
 void	ft_draw_walls(t_game *game);
-// put to screen
+
+// int		ft_gen_color_int(int r, int g, int b);
+// int		ft_color_from_texture(t_game *game, int i, int j);
+
+// 07 put image to screen
 void	ft_put_img(t_game *game);
-
-
 
 // Auxiliary Functions
 void	ft_close_game(t_game *game);
 int		check_coords(t_game *game, double x, double y);
+int		ft_inmap(t_game *game);
 
 // Debugging Information to console
 void	ft_print_player_data(t_player *player);
 void	ft_print_map_data(t_map *map);
 void	ft_print_game_data(t_game *game);
 void	ft_print_rays(t_game *game);
-#
+void	ft_print_texel(t_tex *texture);
+
 // Free functions
 t_map	*ft_closefd_and_free_map(t_map *map);
 void	ft_free_map(t_map *map);

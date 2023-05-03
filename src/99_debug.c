@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/25 23:35:56 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/04/27 23:03:07 by isojo-go         ###   ########.fr       */
+/*   Created: 2023/05/03 23:29:27 by isojo-go          #+#    #+#             */
+/*   Updated: 2023/05/03 23:29:30 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	ft_print_map_data(t_map *map)
 	printf("\n-----------------------------------------\033[0;39m\n\n");
 }
 
-
 void	ft_print_rays(t_game *game)
 {
 	int	i;
@@ -61,9 +60,9 @@ void	ft_print_rays(t_game *game)
 			game->rays.dir[i].y);
 		printf(" - dist: %.3f (corrected: %.3f)", game->rays.dist[i],
 			game->rays.dist[i] * cos(game->rays.angle[i]));
-		printf(" - wall_h: %.3f", game->rays.wall_h[i]);
+		printf(" - wall_h: %d", game->rays.wall_h[i]);
 		printf(" - text: %d\n", game->rays.texture[i]);
-		i += 15;
+		i += 30;
 	}
 	printf("\n-----------------------------------------\033[0;39m\n\n");
 }
@@ -72,4 +71,23 @@ void	ft_print_game_data(t_game *game)
 {
 	ft_print_map_data(game->map);
 	ft_print_player_data(game->player);
+}
+
+void	ft_print_texel(t_tex *texture)
+{
+	int	i;
+	int	j;
+
+	printf("\n\n\033[0;93m--------------- TEXEL DATA ---------------\n\n");
+	i = -1;
+	while (++i < texture->height)
+	{
+		j = 0;
+		while (j < texture->width)
+			printf("%d ", texture->texel[i][j++]);
+		printf("\n");
+	}
+	printf("\n texture->width: %d, texture->height: %d\n\n", texture->width,
+		texture->height);
+	printf("\n-----------------------------------------\033[0;39m\n\n");
 }

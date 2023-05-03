@@ -1,0 +1,16 @@
+NO ./assets/textures/bluestone.xpm
+SO ./assets/textures/mossy.xpm
+WE ./assets/textures/redbrick.xpm
+EA ./assets/textures/colorstone.xpm
+
+F 0,255,0
+C 0,0,255
+
+  1111111111
+111000000001
+100000000001111
+100010000000001
+100000000001111
+10000N011101
+10000001 101
+11111111 111

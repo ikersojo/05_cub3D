@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/25 23:35:07 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/04/25 23:37:44 by isojo-go         ###   ########.fr       */
+/*   Created: 2023/05/03 19:07:52 by isojo-go          #+#    #+#             */
+/*   Updated: 2023/05/03 23:12:44 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ t_player	*ft_init_player(t_map *map)
 
 	player = (t_player *)malloc(sizeof(t_player));
 	if (player == NULL)
+	{
+		ft_free_map(map);
 		return (NULL);
+	}
 	player->x_pos = (double)map->start_x + 0.5;
 	player->y_pos = (double)(map->map_h - map->start_y) - 0.5;
 	player->vx = 0;
@@ -34,6 +37,16 @@ t_player	*ft_init_player(t_map *map)
 	return (player);
 }
 
+static void	ft_free_game_and_exit(t_game *game)
+{
+	if (game->map)
+		ft_free_map(game->map);
+	if (game->player)
+		free(game->player);
+	free (game);
+	ft_exit_w_error("errno");
+}
+
 t_game	*ft_initialize_game(char *map_file, int map_w, int map_h)
 {
 	t_game	*game;
@@ -41,24 +54,20 @@ t_game	*ft_initialize_game(char *map_file, int map_w, int map_h)
 	game = (t_game *)malloc(sizeof(t_game));
 	if (game == NULL)
 		ft_exit_w_error("errno");
-
-
 	game->map = ft_load_map(map_file, map_w, map_h);
 	if (game->map == NULL)
-	{
-		free (game);
-		ft_exit_w_error("errno");
-	}
-
-
+		ft_free_game_and_exit(game);
+	ft_get_initial_pos(game->map);
 	game->player = ft_init_player(game->map);
 	if (game->player == NULL)
+		ft_free_game_and_exit(game);
+	game->gui = ft_initialize_gui();
+	if (game->gui == NULL)
+		ft_free_game_and_exit(game);
+	if (ft_load_textures(game) == 1)
 	{
-		ft_free_map(game->map);
-		free (game);
+		ft_free_all_but_textures(game);
 		ft_exit_w_error("errno");
 	}
-
-
 	return (game);
 }
