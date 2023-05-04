@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 10:55:39 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/04/22 20:01:32 by isojo-go         ###   ########.fr       */
+/*   Updated: 2023/05/04 13:14:13 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int			ft_tolower(int c);
 int			ft_toupper(int c);
 int			ft_digitcount(unsigned long n, int base);
 int			ft_max(int a, int b);
+int			ft_min(int a, int b);
 
 void		ft_exit_w_error(char *str);
 

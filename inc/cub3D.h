@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 20:19:29 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/03 23:12:20 by isojo-go         ###   ########.fr       */
+/*   Updated: 2023/05/04 10:48:45 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 // ---- MACROS ---- //
 
 // Debug Mode
-# define DEBUG		1
+# define DEBUG		0
 # define TEX_ON		1
 
 // Game Parameters

@@ -6,7 +6,7 @@
 #    By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 16:19:35 by isojo-go          #+#    #+#              #
-#    Updated: 2023/04/25 23:37:44 by isojo-go         ###   ########.fr        #
+#    Updated: 2023/05/04 11:09:52 by isojo-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,13 @@
 NAME	=	cub3D
 
 ## Folder Structure:
-SRCDIR	=	src
-OBJDIR	=	obj
-BINDIR	=	bin
+SRCDIR		=	src
+OBJDIR		=	obj
+BINDIR		=	bin
+
+SRC_BDIR	=	src_bonus
+OBJ_BDIR	=	obj_bonus
+BIN_BDIR	=	bin_bonus
 
 ## Libraries:
 LIBMLX	=	./lib/LIBMLX
@@ -29,8 +33,11 @@ LIBS	=	$(LIBFT)/libft.a $(LIBMLX)/libmlx.a -framework OpenGL -framework AppKit
 HEADERS	=	-I ./inc -I $(LIBFT)/inc -I $(LIBMLX)/inc
 
 ## Source Files:
-SRC	=	$(wildcard $(SRCDIR)/*.c)
-OBJ	=	$(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+SRC		=	$(wildcard $(SRCDIR)/*.c)
+OBJ		=	$(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+
+SRC_B	=	$(wildcard $(SRC_BDIR)/*.c)
+OBJ_B	=	$(SRC_B:$(SRC_BDIR)/%.c=$(OBJ_BDIR)/%.o)
 
 ## Compilation flags:
 CC			=	gcc
@@ -60,6 +67,11 @@ $(NAME):	libft libmlx $(OBJ)
 			@$(CC) $(CFLAGS) $(OBJ) $(LIBS) $(HEADERS) -o ./$(BINDIR)/$(NAME)
 			@echo "$(GREEN)$(NAME) compiled!$(DEF_COLOR)"
 
+bonus:		libft libmlx $(OBJ_B)
+			@mkdir -p $(BIN_BDIR)
+			@$(CC) $(CFLAGS) $(OBJ_B) $(LIBS) $(HEADERS) -o ./$(BIN_BDIR)/$(NAME)
+			@echo "$(GREEN)$(NAME) bonus compiled!$(DEF_COLOR)"
+
 libmlx:
 			@$(MAKE) -C $(LIBMLX)
 
@@ -72,8 +84,14 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 			@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
 			@echo "$(GREEN)Done!$(DEF_COLOR)"
 
+$(OBJ_BDIR)/%.o: $(SRC_BDIR)/%.c
+			@mkdir -p $(OBJ_BDIR)
+			@printf "$(BLUE)Compiling: $< ...$(DEF_COLOR)"
+			@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
+			@echo "$(GREEN)Done!$(DEF_COLOR)"
+
 clean:
-			@$(RM) $(OBJ) $(OBJDIR)
+			@$(RM) $(OBJ) $(OBJDIR) $(OBJ_B) $(OBJ_BDIR)
 			@echo "$(YELLOW)$(NAME) object files removed!$(DEF_COLOR)"
 			@$(MAKE) -C $(LIBFT) clean
 			@$(MAKE) -C $(LIBMLX) clean
@@ -82,10 +100,10 @@ fclean:
 			@$(MAKE) -C $(LIBFT) fclean
 			@$(MAKE) -C $(LIBMLX) fclean
 			@if [ -d $(OBJDIR) ]; then \
-				$(RM) $(OBJ) $(OBJDIR); \
+				$(RM) $(OBJ) $(OBJDIR) $(OBJ_B) $(OBJ_BDIR); \
 				echo "$(YELLOW)$(NAME) object files removed!$(DEF_COLOR)"; \
 			fi
-			@$(RM) $(NAME) $(BINDIR)
+			@$(RM) $(NAME) $(BINDIR) $(BIN_BDIR)
 			@echo "$(RED)$(NAME) removed!$(DEF_COLOR)"
 
 re:			fclean all
