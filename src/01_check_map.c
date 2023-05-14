@@ -45,6 +45,35 @@ int allowed(char *line, int flag)
     return (0);
 }
 
+int    parse_textures(char **map, int j, int k, int l, int m)
+{
+    int i;
+    static int f;
+    static int c;
+
+    i = -1;
+    while (map[++i])
+    {
+        if (!ft_strncmp(map[i], "NO ", 3))
+            j++;
+        else if (!ft_strncmp(map[i], "SO ", 3))
+            k++;
+        else if (!ft_strncmp(map[i], "WE ", 3))
+            l++;
+        else if (!ft_strncmp(map[i], "EA ", 3))
+            m++;
+        if (map[i][0] == 'F')
+            f++;
+        else if (map[i][0] == 'C')
+            c++;
+    }
+    if (j != 1 || k != 1 || l != 1 || m != 1)
+        return (printf("There's a missing texture.\n"));
+    if (f != 1 || c != 1)
+        return (printf("There's a missing color.\n"));
+    return (0);
+}
+
 // If the map meets the requirements returns 0. If not, 1.
 // No memoryt should remain allocated when existing this function
 int	ft_check_map(char *map_file, int *w, int *h)
@@ -66,6 +95,7 @@ int	ft_check_map(char *map_file, int *w, int *h)
         i++;
     close(fd);
     map[i] = NULL;
+    error += parse_textures(map, 0, 0, 0, 0);
     j = 7;
     while   (map[++j])
     {
@@ -91,7 +121,6 @@ int	ft_check_map(char *map_file, int *w, int *h)
 // each id line only contains 2 items when splited (ID and VALUE)
 // multiples spaces can be present
 // Checking the map:
-// Only 0, space, 1 and only 1 starting pos char (N, S, W ,E)
 // GNL on each line:
 // store the height of the
 // The length of each line needs to be the same, unless addtinal spaces are required. This means ending in '1'
