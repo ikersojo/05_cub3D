@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:07:41 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/14 22:10:03 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/14 22:54:38 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,7 @@ int re_get_next_line(int fd, char **line)
     return (ft_strlen(*line));
 }
 
-int allowed(char *line, int flag)
-{
-    static int  player = 0;
-    int         i;
 
-    if (flag == 1)
-        return (player);
-    i = -1;
-    while (line[++i])
-    {
-        if (line[i] == '1' || line[i] == '0' || line[i] == ' ')
-            printf("%c", line[i]);
-        else if (line[i] == 'N' || line[i] == 'S' || line[i] == 'W' || line[i] == 'E')
-        {
-            if (player == 1)
-                return (printf("There's more than one player on the map.\n"));
-            player = 1;
-            printf("%c", line[i]);
-            line[i] = '0';
-        }
-        else if (line[i] == '\n')
-            printf("%c", line[i]);
-        else
-            return (printf("There's an invalid character on the map.\n"));
-    }
-    return (0);
-}
 
 int    parse_textures(char **map, int j, int k, int l, int m)
 {
@@ -98,13 +72,8 @@ int	ft_check_map(char *map_file, int *w, int *h)
     map[i] = NULL;
     error += parse_textures(map, 0, 0, 0, 0);
     j = 7;
-    while   (map[++j])
-    {
-        error += allowed(map[j], 0);
-    }
-    if (!allowed(NULL, 1))
-        return (printf("There's no player on the map.\n"));
-    error += ft_bounds(map, 7);
+    error +=ft_allowed_chars(map, j);
+    error += ft_bounds(map, j);
     while (i >= 0)
         free(map[i--]);
 	return (error);
@@ -112,11 +81,6 @@ int	ft_check_map(char *map_file, int *w, int *h)
 
 // TODO: map check logic:
 //(if an error exists: print error type in red, free all allocated mem and return 1)
-// file exists
-// file can be accessed and read
-// file contains all 6 ids (NO, SO, WE, EA F and C) separated by x amount of \n
-// the paths are relative to the executable. CHECK THIS BEHAVIOUR when loading from different paths!!
-// IDs are not repeated
 // The IDs are all before the map
 // there is nothing more than ids and newline chars before the map starts
 // each id line only contains 2 items when splited (ID and VALUE)
@@ -129,6 +93,5 @@ int	ft_check_map(char *map_file, int *w, int *h)
 //the map file ends when the file ends
 // if there are one or multiple empty new lines at the end of the file do not consider them
 // if there are empty lines in between valid lines, consider them as spaces
-// check the map is close (floodfill)
 
 
