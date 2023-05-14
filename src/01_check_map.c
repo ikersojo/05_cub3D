@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:07:41 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/14 20:23:21 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/14 22:10:03 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int allowed(char *line, int flag)
                 return (printf("There's more than one player on the map.\n"));
             player = 1;
             printf("%c", line[i]);
+            line[i] = '0';
         }
         else if (line[i] == '\n')
             printf("%c", line[i]);
@@ -100,10 +101,10 @@ int	ft_check_map(char *map_file, int *w, int *h)
     while   (map[++j])
     {
         error += allowed(map[j], 0);
-        //error += bounds(map, j);
     }
     if (!allowed(NULL, 1))
         return (printf("There's no player on the map.\n"));
+    error += ft_bounds(map, 7);
     while (i >= 0)
         free(map[i--]);
 	return (error);
