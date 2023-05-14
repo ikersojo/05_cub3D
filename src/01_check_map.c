@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:07:41 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/14 12:39:26 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/14 20:23:21 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ int    parse_textures(char **map, int j, int k, int l, int m)
     i = -1;
     while (map[++i])
     {
-        if (!ft_strncmp(map[i], "NO ", 3))
+        if (!ft_strncmp(map[i], "NO  ./", 3))
             j++;
-        else if (!ft_strncmp(map[i], "SO ", 3))
+        else if (!ft_strncmp(map[i], "SO  ./", 3))
             k++;
-        else if (!ft_strncmp(map[i], "WE ", 3))
+        else if (!ft_strncmp(map[i], "WE  ./", 3))
             l++;
-        else if (!ft_strncmp(map[i], "EA ", 3))
+        else if (!ft_strncmp(map[i], "EA  ./", 3))
             m++;
         if (map[i][0] == 'F')
             f++;
