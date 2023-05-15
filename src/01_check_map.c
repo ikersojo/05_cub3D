@@ -6,13 +6,13 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:07:41 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/15 18:26:58 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/15 19:09:34 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3D.h"
 
-int	re_get_next_line(int fd, char **line)
+static int	ft_re_get_next_line(int fd, char **line)
 {
 	*line = ft_gnl(fd);
 	return (ft_strlen(*line));
@@ -31,11 +31,11 @@ int	ft_check_map(char *map_file, int *w, int *h)
 	fd = open(map_file, O_RDONLY);
 	if (fd == -1)
 		return (printf("Map file does not exist or cannot be accessed.\n"));
-	while (re_get_next_line(fd, &map[i]))
+	while (ft_re_get_next_line(fd, &map[i]))
 		i++;
 	close(fd);
 	map[i] = NULL;
-	error += parse_textures(map, 0, 0, 0, 0);
+	error += ft_parse_textures(map, 0, 0, 0, 0);
 	error += ft_allowed_chars(map, ft_map_start(map));
 	*w = ft_get_longest_line(map, ft_map_start(map)) - 1;
 	*h = i - ft_map_start(map);

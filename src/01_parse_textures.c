@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 16:50:33 by mvalient          #+#    #+#             */
-/*   Updated: 2023/05/15 17:28:12 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/15 19:09:34 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	ft_parse_color(char *line, int j, int k, int l)
 	return (0);
 }
 
-int	parse_textures(char **map, int j, int k, int l, int m)
+int	ft_parse_textures(char **map, int j, int k, int l, int m)
 {
 	int			i;
 	static int	f;

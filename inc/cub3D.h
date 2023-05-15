@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 20:19:29 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/15 18:15:02 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/15 19:09:34 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ typedef struct s_game
 int	ft_check_map(char *map_file, int *w, int *h);
 int	ft_allowed_chars(char **map, int j);
 int	ft_bounds(char **map, int i);
-int	parse_textures(char **map, int j, int k, int l, int m);
+int	ft_parse_textures(char **map, int j, int k, int l, int m);
 int	ft_map_start(char **map);
 int ft_get_longest_line(char **map, int j);
 
