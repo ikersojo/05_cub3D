@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:07:41 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/15 17:50:51 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/15 18:15:02 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	ft_check_map(char *map_file, int *w, int *h)
 	static int	i;
 	int			fd;
 
-	*w = 15;
 	printf("\033[0;96mChecking map...\033[0;39m\n");
 	fd = open(map_file, O_RDONLY);
 	if (fd == -1)
@@ -39,6 +38,7 @@ int	ft_check_map(char *map_file, int *w, int *h)
 	error += parse_textures(map, 0, 0, 0, 0);
 	error += ft_allowed_chars(map, ft_map_start(map));
 	error += ft_bounds(map, ft_map_start(map));
+	*w = ft_get_longest_line(map, ft_map_start(map)) - 1;
 	*h = i - ft_map_start(map);
 	while (i >= 0)
 		free(map[i--]);
