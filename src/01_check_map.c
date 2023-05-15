@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:07:41 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/15 18:15:02 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/15 18:26:58 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	re_get_next_line(int fd, char **line)
 int	ft_check_map(char *map_file, int *w, int *h)
 {
 	static int	error;
-	char		*map[20];
+	char		*map[100];
 	static int	i;
 	int			fd;
 
@@ -37,9 +37,11 @@ int	ft_check_map(char *map_file, int *w, int *h)
 	map[i] = NULL;
 	error += parse_textures(map, 0, 0, 0, 0);
 	error += ft_allowed_chars(map, ft_map_start(map));
-	error += ft_bounds(map, ft_map_start(map));
 	*w = ft_get_longest_line(map, ft_map_start(map)) - 1;
 	*h = i - ft_map_start(map);
+	if (*w <= 1 || *h <= 1)
+		return(printf("Map is too small.\n"));
+	error += ft_bounds(map, ft_map_start(map));
 	while (i >= 0)
 		free(map[i--]);
 	return (error);
