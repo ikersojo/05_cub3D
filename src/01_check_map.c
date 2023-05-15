@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:07:41 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/15 09:28:43 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/15 17:28:12 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,35 +16,6 @@ int	re_get_next_line(int fd, char **line)
 {
 	*line = ft_gnl(fd);
 	return (ft_strlen(*line));
-}
-
-int	parse_textures(char **map, int j, int k, int l, int m)
-{
-	int			i;
-	static int	f;
-	static int	c;
-
-	i = -1;
-	while (map[++i])
-	{
-		if (!ft_strncmp(map[i], "NO  ./", 3))
-			j++;
-		else if (!ft_strncmp(map[i], "SO  ./", 3))
-			k++;
-		else if (!ft_strncmp(map[i], "WE  ./", 3))
-			l++;
-		else if (!ft_strncmp(map[i], "EA  ./", 3))
-			m++;
-		if (map[i][0] == 'F')
-			f++;
-		else if (map[i][0] == 'C')
-			c++;
-	}
-	if (j != 1 || k != 1 || l != 1 || m != 1)
-		return (printf("There's a missing texture.\n"));
-	if (f != 1 || c != 1)
-		return (printf("There's a missing color.\n"));
-	return (0);
 }
 
 // If the map meets the requirements returns 0. If not, 1.

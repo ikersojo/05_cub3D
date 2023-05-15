@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 20:19:29 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/14 22:54:45 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/15 17:28:12 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,8 +158,9 @@ typedef struct s_game
 
 // 01 Confim map validity (and extract WxH)
 int	ft_check_map(char *map_file, int *w, int *h);
-int ft_allowed_chars(char **map, int j);
-int ft_bounds(char **map, int i);
+int	ft_allowed_chars(char **map, int j);
+int	ft_bounds(char **map, int i);
+int	parse_textures(char **map, int j, int k, int l, int m);
 
 // 02 Initialize game
 t_game	*ft_initialize_game(char *map_file, int map_w, int map_h);
