@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 17:43:17 by mvalient          #+#    #+#             */
-/*   Updated: 2023/05/15 18:15:02 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/17 00:16:38 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,27 @@ int ft_get_longest_line(char **map, int j)
 		j++;
 	}
 	return (i);
+}
+
+char **ft_safe_map(char **map, int diff, int w, int h)
+{
+	char	**new_map;
+	int		i;
+	int 	j;
+
+	new_map = (char **)malloc(sizeof(char *) * (h + 1));
+	i = -1;
+	while (++i < h)
+	{
+		new_map[i] = (char *)malloc(sizeof(char) * (w + 3));
+		ft_memset(new_map[i], ' ', w + 3);
+		new_map[i][w + 1] = '\n';
+		new_map[i][w + 2] = 0;
+		j = -1;
+		while (map[i + diff][++j])
+			new_map[i][j] = map[i + diff][j];
+		new_map[i][j - 1] = ' ';
+	}
+	new_map[i] = NULL;
+	return (new_map);
 }

@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:07:41 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/15 19:09:34 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/17 00:16:38 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_re_get_next_line(int fd, char **line)
 int	ft_check_map(char *map_file, int *w, int *h)
 {
 	static int	error;
-	char		*map[100];
+	char		*map[10000];
 	static int	i;
 	int			fd;
 
@@ -41,7 +41,7 @@ int	ft_check_map(char *map_file, int *w, int *h)
 	*h = i - ft_map_start(map);
 	if (*w <= 1 || *h <= 1)
 		return(printf("Map is too small.\n"));
-	error += ft_bounds(map, ft_map_start(map));
+	error += ft_bounds(ft_safe_map(map, ft_map_start(map), *w, *h), 0);
 	while (i >= 0)
 		free(map[i--]);
 	return (error);
