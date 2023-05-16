@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 20:19:29 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/17 00:16:38 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/17 01:10:02 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include "../lib/LIBMLX/inc/mlx.h"
 # include <fcntl.h>
 # include <math.h>
-
 
 // ---- MACROS ---- //
 

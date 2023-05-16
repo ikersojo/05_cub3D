@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 16:50:33 by mvalient          #+#    #+#             */
-/*   Updated: 2023/05/15 19:09:34 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/17 01:10:02 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,34 @@ static int	ft_parse_color(char *line, int j, int k, int l)
 	return (0);
 }
 
+static int	ft_texture_exits(char *line, int i)
+{
+	int		fd;
+	char	**split;
+
+	i = -1;
+	split = ft_split(line, ' ');
+	if (split[2])
+	{
+		while (split[++i])
+			free (split[i]);
+		free(split);
+		return (printf("Error\nInvalid texture.\n"));
+	}
+	if (split[1])
+	{
+		split[1][ft_strlen(split[1]) - 1] = 0;
+		fd = open(split[1], O_WRONLY);
+		if (fd < 0)
+			return (close(fd), printf("Error\nInvalid texture.\n"));
+		close(fd);
+	}
+	while (split[++i])
+		free (split[i]);
+	free(split);
+	return (1);
+}
+
 int	ft_parse_textures(char **map, int j, int k, int l, int m)
 {
 	int			i;
@@ -52,14 +80,14 @@ int	ft_parse_textures(char **map, int j, int k, int l, int m)
 	i = -1;
 	while (map[++i])
 	{
-		if (!ft_strncmp(map[i], "NO  ./", 3))
-			j++;
-		else if (!ft_strncmp(map[i], "SO  ./", 3))
-			k++;
-		else if (!ft_strncmp(map[i], "WE  ./", 3))
-			l++;
-		else if (!ft_strncmp(map[i], "EA  ./", 3))
-			m++;
+		if (!ft_strncmp(map[i], "NO ", 3))
+			j = ft_texture_exits(map[i], 0);
+		else if (!ft_strncmp(map[i], "SO ", 3))
+			k = ft_texture_exits(map[i], 0);
+		else if (!ft_strncmp(map[i], "WE ", 3))
+			l = ft_texture_exits(map[i], 0);
+		else if (!ft_strncmp(map[i], "EA ", 3))
+			m = ft_texture_exits(map[i], 0);
 		if (map[i][0] == 'F')
 			f = !ft_parse_color(map[i], 0, 0, 0);
 		else if (map[i][0] == 'C')
