@@ -29,6 +29,10 @@
 # include <stdarg.h>
 # include <stdio.h>
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
+
 int			ft_isalnum(char c);
 int			ft_isalpha(char c);
 int			ft_isascii(char c);
@@ -87,7 +91,7 @@ int			ft_min(int a, int b);
 
 void		ft_exit_w_error(char *str);
 
-char		*ft_gnl(int fd);
+char		*get_next_line(int fd);
 
 int			ft_ext_ok(char *filename, char *ext);
 

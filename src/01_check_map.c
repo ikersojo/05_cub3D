@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:07:41 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/17 16:36:07 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/17 21:23:03 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_re_get_next_line(int fd, char **line)
 {
-	*line = ft_gnl(fd);
+	*line = get_next_line(fd);
 	return (ft_strlen(*line));
 }
 

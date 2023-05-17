@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 20:15:10 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/03 23:15:05 by isojo-go         ###   ########.fr       */
+/*   Updated: 2023/05/17 21:48:42 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	**ft_gen_map_grid(t_map *map, char **line)
 	while (++i < map->map_h)
 	{
 		if (i != 0)
-			*line = ft_gnl(map->mapfd);
+			*line = get_next_line(map->mapfd);
 		j = -1;
 		while (++j < map->map_w)
 		{
