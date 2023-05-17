@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 20:20:32 by mvalient          #+#    #+#             */
-/*   Updated: 2023/05/17 16:36:07 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/17 21:17:25 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	ft_bounds(char **map, int i)
 
 	if (ft_first_last_line(map[i]))
 		return (1);
-	while (map[++i])
+	while (map[++i] && map[i + 1])
 	{
 		j = 0;
 		if (map[i][j] == '0')
@@ -82,6 +82,6 @@ int	ft_bounds(char **map, int i)
 		}
 	}
 	if (ft_first_last_line(map[i]))
-		return (1);
-	return (0);
+		return (ft_free_return(map, 1, 1));
+	return (ft_free_return(map, 0, 1));
 }
