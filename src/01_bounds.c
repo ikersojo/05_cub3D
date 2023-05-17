@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 20:20:32 by mvalient          #+#    #+#             */
-/*   Updated: 2023/05/15 08:49:47 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/17 08:44:22 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,21 @@ static int	ft_first_last_line(char *line)
 	return (0);
 }
 
+int ft_free_return(char **map, int error, int freemap)
+{
+	int	i;
+
+	i = -1;
+	while (map[++i])
+		free(map[i]);
+	if (freemap)
+		free(map);
+	if (error)
+		return (printf("Error\nMap is not surrounded by walls.\n"));
+	else
+		return (0);
+}
+
 /*
  * Function will return nonzero if map spaces are not surrounded by walls.
  * map argument contains full configuration file.
@@ -54,16 +69,16 @@ int	ft_bounds(char **map, int i)
 	{
 		j = 0;
 		if (map[i][j] == '0')
-			return (printf("Error\nMap is not surrounded by walls.\n"));
+			return (ft_free_return(map, 1, 1));
 		if (!map[i + 1])
 			break ;
 		while (map[i][++j])
 		{
 			if (map[i][j + 1] == '\0' && map[i][j] == '0')
-				return (printf("Error\nMap is not surrounded by walls.\n"));
+				return (ft_free_return(map, 1, 1));
 			else if (map[i][j] == '0')
 				if (ft_check_near(map, i, j) == 0)
-					return (printf("Error\nMap is not surrounded by walls.\n"));
+					return (ft_free_return(map, 1, 1));
 		}
 	}
 	if (ft_first_last_line(map[i]))
