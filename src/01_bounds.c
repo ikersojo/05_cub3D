@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 20:20:32 by mvalient          #+#    #+#             */
-/*   Updated: 2023/05/17 08:44:22 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/17 16:36:07 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	ft_first_last_line(char *line)
 	return (0);
 }
 
-int ft_free_return(char **map, int error, int freemap)
+int	ft_free_return(char **map, int error, int freemap)
 {
 	int	i;
 

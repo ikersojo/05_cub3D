@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:07:41 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/17 16:23:31 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/17 16:36:07 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,31 +35,16 @@ int	ft_check_map(char *map_file, int *w, int *h)
 	while (ft_re_get_next_line(fd, &map[i]))
 		i++;
 	close(fd);
-	error += ft_parse_textures(map, 0, 0, 0, 0);
+	error += ft_parse_textures(map, 0, 0, 0);
 	error += ft_allowed_chars(map, ft_map_start(map));
 	*w = ft_get_longest_line(map, ft_map_start(map)) - 1;
 	*h = i - ft_map_start(map);
 	if (*w <= 1 || *h <= 1)
 	{
 		ft_free_return(map, 0, 0);
-		return(printf("Map is too small.\n"));
+		return (printf("Map is too small.\n"));
 	}
 	error += ft_bounds(ft_safe_map(map, ft_map_start(map), *w, *h), 0);
 	ft_free_return(map, 0, 0);
 	return (error);
 }
-
-// TODO: map check logic:
-//(if an error exists: print error type in red, free all allocated mem and return 1)
-// The IDs are all before the map
-// there is nothing more than ids and newline chars before the map starts
-// each id line only contains 2 items when splited (ID and VALUE)
-// multiples spaces can be present
-// Checking the map:
-// GNL on each line:
-// store the height of the
-// The length of each line needs to be the same, unless addtinal spaces are required. This means ending in '1'
-// In the process of sweeping lines, store the max width (without the new line char)
-//the map file ends when the file ends
-// if there are one or multiple empty new lines at the end of the file do not consider them
-// if there are empty lines in between valid lines, consider them as spaces

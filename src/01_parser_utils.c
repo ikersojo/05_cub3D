@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 17:43:17 by mvalient          #+#    #+#             */
-/*   Updated: 2023/05/17 00:16:38 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/17 16:36:07 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_map_start(char **map)
 	return (0);
 }
 
-int ft_get_longest_line(char **map, int j)
+int	ft_get_longest_line(char **map, int j)
 {
 	static int	i;
 
@@ -38,11 +38,11 @@ int ft_get_longest_line(char **map, int j)
 	return (i);
 }
 
-char **ft_safe_map(char **map, int diff, int w, int h)
+char	**ft_safe_map(char **map, int diff, int w, int h)
 {
 	char	**new_map;
 	int		i;
-	int 	j;
+	int		j;
 
 	new_map = (char **)malloc(sizeof(char *) * (h + 1));
 	i = -1;

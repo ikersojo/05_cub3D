@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 16:50:33 by mvalient          #+#    #+#             */
-/*   Updated: 2023/05/17 16:23:31 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/17 16:36:07 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_parse_color(char *line, int j, int k, int l)
 
 	i = 0;
 	while (line[++i] == ' ')
-		 ;
+		;
 	while (ft_isdigit(line[i + j]))
 		j++;
 	if (line[i++ + j] != ',')
@@ -71,11 +71,12 @@ static int	ft_texture_exits(char *line, int i)
 	return (1);
 }
 
-int	ft_parse_textures(char **map, int j, int k, int l, int m)
+int	ft_parse_textures(char **map, int j, int f, int c)
 {
 	int			i;
-	static int	f;
-	static int	c;
+	static int	k;
+	static int	l;
+	static int	m;
 
 	i = -1;
 	while (map[++i])
@@ -93,9 +94,7 @@ int	ft_parse_textures(char **map, int j, int k, int l, int m)
 		else if (map[i][0] == 'C')
 			c += !ft_parse_color(map[i], 0, 0, 0);
 	}
-	if (j != 1 || k != 1 || l != 1 || m != 1)
-		return (printf("There's a missing texture.\n"));
-	if (f != 1 || c != 1)
-		return (printf("There's a missing color.\n"));
+	if (j != 1 || k != 1 || l != 1 || m != 1 || f != 1 || c != 1)
+		return (printf("Error\nThere's a missing texture or color.\n"));
 	return (0);
 }
