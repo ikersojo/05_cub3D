@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:07:52 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/04 11:21:08 by isojo-go         ###   ########.fr       */
+/*   Updated: 2023/05/17 22:21:03 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ t_game	*ft_initialize_game(char *map_file, int map_w, int map_h)
 	if (ft_load_textures(game) == 1)
 	{
 		ft_free_all_but_textures(game);
-		ft_exit_w_error("errno");
+		ft_exit_w_error("Textures could not be loaded");
 	}
 	return (game);
 }

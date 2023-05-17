@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 23:17:00 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/04 11:21:08 by isojo-go         ###   ########.fr       */
+/*   Updated: 2023/05/17 22:21:03 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int	ft_text_to_img(t_game *game, int i)
 		return (2);
 	tex->img->img = mlx_xpm_file_to_image(game->gui->mlx,
 			game->map->params[i], &tex->width, &tex->height);
-	if (tex->img == NULL)
+	if (tex->img->img == NULL)
 		return (3);
 	tex->img->addr = mlx_get_data_addr(tex->img->img, &tex->img->bpp,
 			&tex->img->linelen, &tex->img->endian);
