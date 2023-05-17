@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:07:06 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/14 12:39:26 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/17 22:25:03 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,3 @@ int	main(int argc, char **argv)
 		ft_exit_w_error("syntax: ./bin/cub3D xxxxxx.cub\n");
 	return (EXIT_SUCCESS);
 }
-
-	// (confirmar necesidad o no de las siguientes lineas:)
-		// mlx_hook(game->gui->win, ON_KEYUP, 0, ft_on_keyup, &game);
-		// mlx_loop_hook(game->gui->mlx, ft_on_idle, &game);

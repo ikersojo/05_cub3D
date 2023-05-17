@@ -6,7 +6,7 @@
 #    By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 16:19:35 by isojo-go          #+#    #+#              #
-#    Updated: 2022/12/24 08:26:58 by isojo-go         ###   ########.fr        #
+#    Updated: 2023/05/17 22:24:06 by isojo-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ CFLAGS		+=	-O2
 CFLAGS		+=	-DSTRINGPUTX11 # add to match string put with X11 in size and position
 RM			=	rm -rf
 AR			=	ar rc
-DEBUG		=	-g3 -fsanitize=address
+DEBUG		=	#-g3 -fsanitize=address
 
 ## Extras:
 ### Colors:

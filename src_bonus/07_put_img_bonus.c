@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 23:21:12 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/04 13:17:40 by isojo-go         ###   ########.fr       */
+/*   Updated: 2023/05/17 22:35:50 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	ft_color_minimap(t_game *game, int i, int j, int first_pixel)
 	int	color;
 
 	map_scale = (ft_min(SCREEN_H, SCREEN_W) / ft_max(game->map->map_w,
-		game->map->map_h)) / 4;
+				game->map->map_h)) / 4;
 	if (i == game->map->map_h - (int)floor(game->player->y_pos) - 1
 		&& j == (int)floor(game->player->x_pos))
 		color = 999;
@@ -43,7 +43,6 @@ static void	ft_gen_minimap(t_game *game)
 	int	i;
 	int	j;
 	int	first_pixel;
-
 
 	first_pixel = 10;
 	i = -1;
