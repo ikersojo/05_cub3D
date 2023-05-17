@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:07:41 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/17 08:44:22 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/17 16:23:31 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	ft_re_get_next_line(int fd, char **line)
 int	ft_check_map(char *map_file, int *w, int *h)
 {
 	static int	error;
-	char		*map[100];
+	char		*map[1000];
 	static int	i;
 	int			fd;
 

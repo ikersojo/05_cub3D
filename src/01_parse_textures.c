@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 16:50:33 by mvalient          #+#    #+#             */
-/*   Updated: 2023/05/17 01:10:02 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/17 16:23:31 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,17 +81,17 @@ int	ft_parse_textures(char **map, int j, int k, int l, int m)
 	while (map[++i])
 	{
 		if (!ft_strncmp(map[i], "NO ", 3))
-			j = ft_texture_exits(map[i], 0);
+			j += ft_texture_exits(map[i], 0);
 		else if (!ft_strncmp(map[i], "SO ", 3))
-			k = ft_texture_exits(map[i], 0);
+			k += ft_texture_exits(map[i], 0);
 		else if (!ft_strncmp(map[i], "WE ", 3))
-			l = ft_texture_exits(map[i], 0);
+			l += ft_texture_exits(map[i], 0);
 		else if (!ft_strncmp(map[i], "EA ", 3))
-			m = ft_texture_exits(map[i], 0);
+			m += ft_texture_exits(map[i], 0);
 		if (map[i][0] == 'F')
-			f = !ft_parse_color(map[i], 0, 0, 0);
+			f += !ft_parse_color(map[i], 0, 0, 0);
 		else if (map[i][0] == 'C')
-			c = !ft_parse_color(map[i], 0, 0, 0);
+			c += !ft_parse_color(map[i], 0, 0, 0);
 	}
 	if (j != 1 || k != 1 || l != 1 || m != 1)
 		return (printf("There's a missing texture.\n"));
