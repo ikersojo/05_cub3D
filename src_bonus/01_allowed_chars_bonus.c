@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 22:45:19 by mvalient          #+#    #+#             */
-/*   Updated: 2023/05/18 07:04:11 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/18 08:23:12 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,17 @@ static int	ft_allowed(char *line, int flag)
 	while (line[++i])
 	{
 		if (line[i] == '1' || line[i] == '0' || line[i] == ' ')
-			printf("%c", line[i]);
+			;
 		else if (line[i] == 'N' || line[i] == 'S'
-			|| line[i] == 'W' || line[i] == 'E')
+				 || line[i] == 'W' || line[i] == 'E')
 		{
 			if (player == 1)
 				return (printf("Error\nMore than one player on the map.\n"));
 			player = 1;
-			printf("%c", line[i]);
 			line[i] = '0';
 		}
 		else if (line[i] == '\n')
-			printf("%c", line[i]);
+			;
 		else
 			return (printf("Error\nInvalid character on the map.\n"));
 	}
