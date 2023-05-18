@@ -31,7 +31,7 @@
 # define WALL_H		1000
 # define STEP		0.2
 # define ROT_STEP	0.1
-# define FOD		M_PI / 3
+# define FOD		1.0472
 
 // Key Codes for MacOS
 # define KEY_ESC	53
@@ -50,7 +50,6 @@
 # define ON_MOUSEMOVE	6
 # define ON_EXPOSE		12
 # define ON_DESTROY		17
-
 
 // ---- Custom Structs ---- //
 
@@ -94,7 +93,6 @@ typedef struct s_tex
 	int		texel[SCREEN_H][SCREEN_W];
 }			t_tex;
 
-// store all information about the graphic window. Textures stored: 1: N, 2: S, 3: W, 4: E
 typedef struct s_gui
 {
 	void	*mlx;
@@ -110,29 +108,18 @@ typedef struct s_map
 {
 	int		mapfd;
 	char	*params[6];
-		// char	*no_path;
-		// char	*so_path;
-		// char	*we_path;
-		// char	*ea_path;
-		// char	*floor;
-		// char	*ceiling;
-
 	int		f_r;
 	int		f_g;
 	int		f_b;
-
 	int		c_r;
 	int		c_g;
 	int		c_b;
-
 	char	**grid;
 	int		map_w;
 	int		map_h;
-
 	int		start_x;
 	int		start_y;
 	char	start_char;
-
 }			t_map;
 
 // store all information about the player
@@ -156,14 +143,14 @@ typedef struct s_game
 // ---- CROSS FILE FUNCTIONS ---- //
 
 // 01 Confim map validity (and extract WxH)
-int	ft_check_map(char *map_file, int *w, int *h);
-int	ft_allowed_chars(char **map, int j);
-int	ft_bounds(char **map, int i);
-int	ft_parse_textures(char **map, int j, int f, int c);
-int	ft_map_start(char **map);
-int ft_get_longest_line(char **map, int j);
-char **ft_safe_map(char **map, int diff, int w, int h);
-int ft_free_return(char **map, int error, int freemap);
+int		ft_check_map(char *map_file, int *w, int *h);
+int		ft_allowed_chars(char **map, int j);
+int		ft_bounds(char **map, int i);
+int		ft_parse_textures(char **map, int j, int f, int c);
+int		ft_map_start(char **map);
+int		ft_get_longest_line(char **map, int j);
+char	**ft_safe_map(char **map, int diff, int w, int h);
+int		ft_free_return(char **map, int error, int freemap);
 
 // 02 Initialize game
 t_game	*ft_initialize_game(char *map_file, int map_w, int map_h);
@@ -189,9 +176,6 @@ void	ft_raycast(t_game *game);
 void	ft_put_pixel(t_img *img, int x, int y, int color);
 void	ft_draw_background(t_game *game);
 void	ft_draw_walls(t_game *game);
-
-// int		ft_gen_color_int(int r, int g, int b);
-// int		ft_color_from_texture(t_game *game, int i, int j);
 
 // 07 put image to screen
 void	ft_put_img(t_game *game);
