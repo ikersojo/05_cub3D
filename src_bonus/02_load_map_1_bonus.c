@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 20:14:42 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/04 11:21:08 by isojo-go         ###   ########.fr       */
+/*   Updated: 2023/05/18 07:04:11 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_map	*ft_load_map(char *map_file, int map_w, int map_h)
 		return (NULL);
 	while (1)
 	{
-		line = ft_gnl(map->mapfd);
+		line = get_next_line(map->mapfd);
 		if (line == NULL)
 			return (ft_closefd_and_free_map(map));
 		else if (ft_chars_valid(line, " \n") == 1)
