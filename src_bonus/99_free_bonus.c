@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   99_free_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: isojo-go <isojo-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 23:29:13 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/04 11:21:28 by isojo-go         ###   ########.fr       */
+/*   Updated: 2023/05/18 08:02:21 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	ft_free_all_but_textures(t_game *game)
 {
 	if (game->gui->win != NULL)
 		mlx_destroy_window(game->gui->mlx, game->gui->win);
+	if (game->gui->img != NULL)
+		free (game->gui->img);
 	if (game->gui != NULL)
 		free (game->gui);
 	ft_free_map(game->map);
