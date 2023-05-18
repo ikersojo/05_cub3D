@@ -6,7 +6,7 @@
 /*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 20:20:32 by mvalient          #+#    #+#             */
-/*   Updated: 2023/05/17 21:17:25 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/18 07:53:03 by mvalient        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,12 @@ int	ft_free_return(char **map, int error, int freemap)
 		free(map[i]);
 	if (freemap)
 		free(map);
-	if (error)
+	if (error == 1)
 		return (printf("Error\nMap is not surrounded by walls.\n"));
+	else if (error == 2)
+		return (printf("Error\nMap is too big.\n"));
+	else if (error == 3)
+		return (printf("Map is too small.\n"));
 	else
 		return (0);
 }
