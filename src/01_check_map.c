@@ -6,7 +6,7 @@
 /*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:07:41 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/18 07:53:03 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/18 10:13:03 by mvalient         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ int	ft_check_map(char *map_file, int *w, int *h)
 	static int	i;
 	int			fd;
 
-	ft_memset(map, 0, sizeof(map));
+	map[999] = 0;
 	fd = open(map_file, O_RDONLY);
 	if (fd == -1)
 		return (printf("Map file does not exist or cannot be accessed.\n"));
 	while (ft_re_get_next_line(fd, &map[i]))
 	{
-		if (i == 999)
+		if (i == 998)
 			return (ft_free_return(map, 2, 0));
 		i++;
 	}

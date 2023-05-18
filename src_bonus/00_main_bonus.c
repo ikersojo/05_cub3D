@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   00_main_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: isojo-go <isojo-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 19:07:06 by isojo-go          #+#    #+#             */
-/*   Updated: 2023/05/18 07:53:03 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/18 14:57:48 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	if (argc == 2 && ft_ext_ok(*(argv + 1), ".cub"))
 	{
 		printf("\033[0;96mChecking map...\033[0;39m\n");
-		if (ft_check_map(*(argv + 1), &map_w, &map_h) == 1)
+		if (ft_check_map(*(argv + 1), &map_w, &map_h))
 			ft_exit_w_error("The map file is not valid\n");
 		game = ft_initialize_game(*(argv + 1), map_w, map_h);
 		if (DEBUG == 1)

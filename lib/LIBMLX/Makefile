@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+         #
+#    By: isojo-go <isojo-go@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 16:19:35 by isojo-go          #+#    #+#              #
-#    Updated: 2023/05/17 22:24:06 by isojo-go         ###   ########.fr        #
+#    Updated: 2023/05/18 14:53:51 by isojo-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,9 @@ OBJS	=	$(OBJS2) $(OBJS1)
 ## Compilation flags:
 CC			=	gcc
 CFLAGS		+=	-O2
-CFLAGS		+=	-DSTRINGPUTX11 # add to match string put with X11 in size and position
+CFLAGS		+=	-DSTRINGPUTX11
 RM			=	rm -rf
 AR			=	ar rc
-DEBUG		=	#-g3 -fsanitize=address
 
 ## Extras:
 ### Colors:

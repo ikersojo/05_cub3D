@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01_allowed_chars.c                                 :+:      :+:    :+:   */
+/*   01_allowed_chars_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvalient <mvalient@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: isojo-go <isojo-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 22:45:19 by mvalient          #+#    #+#             */
-/*   Updated: 2023/05/18 08:23:12 by mvalient         ###   ########.fr       */
+/*   Updated: 2023/05/18 14:50:44 by isojo-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	ft_allowed(char *line, int flag)
 		if (line[i] == '1' || line[i] == '0' || line[i] == ' ')
 			;
 		else if (line[i] == 'N' || line[i] == 'S'
-				 || line[i] == 'W' || line[i] == 'E')
+			|| line[i] == 'W' || line[i] == 'E')
 		{
 			if (player == 1)
 				return (printf("Error\nMore than one player on the map.\n"));

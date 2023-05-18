@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: isojo-go <isojo-go@student.42urduliz.co    +#+  +:+       +#+         #
+#    By: isojo-go <isojo-go@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/09 15:28:36 by isojo-go          #+#    #+#              #
-#    Updated: 2023/05/17 22:24:06 by isojo-go         ###   ########.fr        #
+#    Updated: 2023/05/18 14:53:51 by isojo-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ OBJS	=	$(SRCS:.c=.o)
 ## Compilation flags:
 CC			=	gcc
 AR			=	ar rc
-CFLAGS		=	-Wall -Wextra -Werror #-g3 -fsanitize=address
+CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -rf
 
 ## Extras:
